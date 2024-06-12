@@ -8,8 +8,8 @@
 
 // enable gpiob and tim2 from rcc
 // tim2 PSC will be 7 so our clock will be 1Mhz
-// let ARR 9600 like baudrate
-// for test lets CCR1 to 104 just for checking
+
+
 
 //cfg gpiob to high speed push pull output mode
 
@@ -78,7 +78,7 @@ int main(){
         
         if((*gpiobIdr & 0x2000) == 0x2000){
             if(((*tim2Sr & 2)>>1) == 1){
-                *tim2Sr &= ~(2);
+                *tim2Sr &= ~(2); //clean the flag
                 
                 if(bitNo == 0){
                     *gpiobOdr       &= ~(1<<12);
